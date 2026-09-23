@@ -1,0 +1,347 @@
+:root {
+  --bg: #eaf3f9;
+  --bg-soft: #f6fbfe;
+  --card-bg: #ffffff;
+  --accent: #378add;
+  --accent-dark: #2a6da9;
+  --accent-soft: #e4f0fa;
+  --text: #1e2a3a;
+  --text-muted: #6b7c8f;
+  --border: #dfeaf3;
+  --green: #22b573;
+  --green-soft: #e5f8ef;
+  --amber: #e6a417;
+  --amber-soft: #fdf3df;
+  --red: #e54a4a;
+  --red-soft: #fde9e9;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --shadow: 0 1px 2px rgba(30, 42, 58, 0.03), 0 10px 24px rgba(55, 138, 221, 0.07);
+  --shadow-soft: 0 1px 2px rgba(30, 42, 58, 0.03), 0 4px 12px rgba(55, 138, 221, 0.05);
+  --ease: 0.2s ease;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Inter", system-ui, -apple-system, sans-serif;
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-soft) 100%);
+  background-attachment: fixed;
+  color: var(--text);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 600;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input, select {
+  font-family: inherit;
+  transition: box-shadow var(--ease);
+}
+
+input:focus, select:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(55, 138, 221, 0.18);
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--border);
+  padding: 22px;
+  transition: box-shadow var(--ease), border-color var(--ease);
+}
+
+.stat-label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: 0.2px;
+  margin-bottom: 2px;
+}
+
+.stat-value {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.stat-value.sm {
+  font-size: 16px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background var(--ease), color var(--ease);
+}
+
+.badge-normal { background: var(--green-soft); color: var(--green); }
+.badge-rising { background: var(--amber-soft); color: var(--amber); }
+.badge-alert { background: var(--red-soft); color: var(--red); }
+
+.btn {
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.1s ease, box-shadow var(--ease), background var(--ease), color var(--ease), border-color var(--ease);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 2px 8px rgba(55, 138, 221, 0.25);
+}
+
+.btn-primary:hover {
+  background: var(--accent-dark);
+  box-shadow: 0 4px 14px rgba(55, 138, 221, 0.32);
+}
+
+.btn-outline {
+  background: white;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-danger-outline {
+  background: white;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+.btn-danger-outline:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Hero call-to-action (Simulate outbreak) */
+.btn-hero {
+  padding: 14px 24px;
+  font-size: 15px;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(55, 138, 221, 0.32);
+}
+
+.btn-hero:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(55, 138, 221, 0.4);
+}
+
+.pulse-icon {
+  position: relative;
+  display: inline-flex;
+}
+
+.pulse-icon::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  animation: icon-pulse 1.8s ease-out infinite;
+}
+
+@keyframes icon-pulse {
+  0% { transform: scale(0.7); opacity: 0.9; }
+  70% { transform: scale(1.6); opacity: 0; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.alert-card {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  background: #fbfdff;
+  transition: border-color var(--ease), background var(--ease), box-shadow var(--ease);
+  animation: card-in 0.3s ease;
+}
+
+.ai-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 12.5px;
+  font-style: italic;
+  line-height: 1.4;
+  margin-bottom: 12px;
+  animation: card-in 0.3s ease;
+}
+
+.ai-callout svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--accent);
+}
+
+.action-btn {
+  border: 1px solid;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 10px;
+}
+
+.action-btn:hover {
+  filter: brightness(0.97);
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+/* Entrance animation for newly-mounted cards (e.g. a fresh alert appearing) */
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Cluster network view — dark theme, scoped to this one card only */
+.cluster-network-view {
+  background: #0a0e14;
+  border-color: #1c2430;
+  color: #e6edf3;
+}
+
+.cluster-network-view .card-header h2 {
+  color: #e6edf3;
+}
+
+.cluster-node {
+  transition: fill 0.3s ease, r 0.3s ease, filter 0.3s ease, stroke 0.3s ease;
+}
+
+.cluster-link {
+  transition: stroke 0.4s ease, stroke-width 0.4s ease, opacity 0.4s ease;
+}
+
+.watch-ring {
+  stroke: var(--amber);
+  stroke-width: 2;
+  stroke-dasharray: 3 3;
+  opacity: 0.85;
+  filter: drop-shadow(0 0 4px rgba(230, 164, 23, 0.5));
+  transition: opacity 0.3s ease;
+}
+
+.ripple-ring {
+  stroke: #e5484d;
+  stroke-width: 3;
+  opacity: 0.9;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ripple-expand 1.1s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes ripple-expand {
+  from {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  to {
+    transform: scale(3.4);
+    opacity: 0;
+  }
+}
+
+.cluster-side-panel {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 230px;
+  background: #131a24;
+  border: 1px solid #232d3b;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+  animation: card-in 0.25s ease;
+}
+
+.cluster-ai-callout {
+  background: rgba(55, 138, 221, 0.14);
+  color: #a9cdf2;
+}
+
+.cluster-ai-callout svg {
+  color: #6fb2f0;
+}
+
+/* Leaflet marker glow + pulse for alert / rising villages */
+.leaflet-interactive {
+  transition: fill 0.35s ease, stroke 0.35s ease, filter 0.35s ease;
+}
+
+.dot-rising {
+  filter: drop-shadow(0 0 5px rgba(230, 164, 23, 0.55));
+}
+
+.dot-alert {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: dot-pulse 1.7s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 4px rgba(229, 74, 74, 0.65));
+  }
+  50% {
+    transform: scale(1.12);
+    filter: drop-shadow(0 0 13px rgba(229, 74, 74, 0.95));
+  }
+}
